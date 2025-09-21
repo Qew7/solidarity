@@ -1,6 +1,6 @@
 # Solidarity
 
-A Ruby gem for analyzing Ruby projects for SOLID principles adherence. This gem uses Railroady to generate class diagrams and then analyzes them to provide an assessment of SOLID principles.
+A Ruby gem for analyzing Ruby projects for SOLID principles adherence. This gem uses RailRoady to generate class diagrams and then analyzes them to provide an assessment of SOLID principles.
 
 ## Installation
 

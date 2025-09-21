@@ -12,7 +12,7 @@ unless project_path
 end
 
 begin
-  railroady_graph = Solidarity::RailroadyRunner.run(project_path)
+  railroady_graph = Solidarity::RailRoadyRunner.run(project_path)
   graph = Solidarity::Graph.new(railroady_graph)
   solid_results = Solidarity::SolidEvaluator.new(graph).evaluate_all
   report = Solidarity::Reporter.generate_report(solid_results)

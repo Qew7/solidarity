@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["your_email@example.com"]
 
   spec.summary = %q{A Ruby gem for analyzing Ruby projects for SOLID principles adherence.}
-  spec.description = %q{This gem uses Railroady to generate class diagrams and then analyzes them to provide an assessment of SOLID principles.}
+  spec.description = %q{This gem uses RailRoady to generate class diagrams and then analyzes them to provide an assessment of SOLID principles.}
   spec.homepage = "https://github.com/your-username/ruby-solid-analyzer"
   spec.license = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
