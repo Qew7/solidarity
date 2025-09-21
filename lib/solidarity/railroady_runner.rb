@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'railroady'
 require 'parser/current'
 require_relative 'ast_processor' # Add this line
 

@@ -1,20 +1,12 @@
-require 'railroady/diagram_graph'
-
 module Solidarity
   class Graph
     attr_reader :nodes, :edges
 
-    def initialize(data_source)
+    def initialize(ast_data)
       @nodes = []
       @edges = []
 
-      if data_source.is_a?(Hash) && data_source.key?(:classes)
-        # Data from AST Processor
-        initialize_from_ast_data(data_source)
-      else
-        # Original Railroady graph data
-        initialize_from_railroady_graph(data_source)
-      end
+      initialize_from_ast_data(ast_data)
     end
 
     def self.from_ast_data(ast_data)
@@ -34,15 +26,6 @@ module Solidarity
     end
 
     private
-
-    def initialize_from_railroady_graph(railroady_graph)
-      @nodes = railroady_graph.nodes.map do |node_data|
-        Node.new(name: node_data[1], label: node_data[1], type: node_data[0])
-      end
-      @edges = railroady_graph.edges.map do |edge_data|
-        Edge.new(source: edge_data[1], target: edge_data[2], label: edge_data[3], type: edge_data[0])
-      end
-    end
 
     def initialize_from_ast_data(ast_data)
       ast_data[:classes].each do |class_name|

@@ -3,7 +3,6 @@ PATH
   specs:
     solidarity (0.1.0)
       parser (~> 3.3.0.2)
-      railroady (~> 1.6)
 
 GEM
   remote: https://rubygems.org/

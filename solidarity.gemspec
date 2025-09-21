@@ -10,23 +10,19 @@ Gem::Specification.new do |spec|
 
   spec.summary = %q{A Ruby gem for analyzing Ruby projects for SOLID principles adherence.}
   spec.description = %q{This gem uses RailRoady to generate class diagrams and then analyzes them to provide an assessment of SOLID principles.}
-  spec.homepage = "https://github.com/your-username/ruby-solid-analyzer"
+  spec.homepage = "https://github.com/solidarity-gem/solidarity"
   spec.license = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
   # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` command is required to ensure that no extraneous files are added.
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject do |f|
-      (f == __FILE__) || f.match(%r{^(test|spec|features)/}) || f.match(%r{^bin/(console|setup)$})
-    end
-  end
+  # The `git ls-files -z` command returns everything that isn't ignored by git.
+  files = Dir.chdir(__dir__) { `git ls-files -z`.split("\0") }
+  spec.files = files.grep(%r{\A(?:exe|lib|sig)/}) { |f| File.basename(f) == "solidarity.rbs" ? f : File.join(File.dirname(f), File.basename(f)) }
   spec.bindir = "exe"
-  spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "railroady", "~> 1.6"
   spec.add_dependency "parser", "~> 3.3.0.2"
 
   spec.add_development_dependency "minitest", "~> 5.0"
@@ -34,7 +30,7 @@ Gem::Specification.new do |spec|
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
   spec.metadata["allowed_push_host"] = "https://rubygems.org" # Optional: To prevent accidental pushes to other hosts
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/your-username/ruby-solid-analyzer"
-  spec.metadata["changelog_uri"] = "https://github.com/your-username/ruby-solid-analyzer/blob/main/CHANGELOG.md"
+  spec.metadata["homepage_uri"] = "https://github.com/solidarity-gem/solidarity"
+  spec.metadata["source_code_uri"] = "https://github.com/solidarity-gem/solidarity"
+  spec.metadata["changelog_uri"] = "https://github.com/solidarity-gem/solidarity/blob/main/CHANGELOG.md"
 end
