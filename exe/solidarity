@@ -1,20 +1,37 @@
 #!/usr/bin/env ruby
 
 require "solidarity"
+require 'optparse'
 
-# TODO: Add option parsing (e.g., using OptionParser)
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{File.basename($PROGRAM_NAME)} [options] <path_to_ruby_project>"
+
+  opts.on("--with-specs", "Include spec/test files in the analysis") do
+    options[:with_specs] = true
+  end
+
+  opts.on("--with-srp-details", "Include detailed SRP scores in the report") do
+    options[:with_srp_details] = true
+  end
+
+  opts.on("-h", "--help", "Prints this help") do
+    puts opts
+    exit
+  end
+end.parse!
 
 project_path = ARGV[0]
 
 unless project_path
-  warn "Usage: #{File.basename($PROGRAM_NAME)} <path_to_ruby_project>"
+  warn "Usage: #{File.basename($PROGRAM_NAME)} [options] <path_to_ruby_project>"
   exit 1
 end
 
 begin
-  graph = Solidarity::RailRoadyRunner.run(project_path)
+  graph = Solidarity::RailRoadyRunner.run(project_path, with_specs: options[:with_specs])
   solid_results = Solidarity::SolidEvaluator.new(graph).evaluate_all
-  report = Solidarity::Reporter.generate_report(solid_results)
+  report = Solidarity::Reporter.generate_report(solid_results, with_srp_details: options[:with_srp_details])
   puts report
 rescue => e
   warn "Error: #{e.message}"

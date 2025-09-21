@@ -14,9 +14,27 @@ module Solidarity
     end
 
     def process_file(file_path)
-      content = File.read(file_path)
-      ast = Parser::CurrentRuby.parse(content)
-      traverse_ast(ast, nil) # Pass initial context as nil
+      content = File.read(file_path, encoding: 'UTF-8')
+      begin
+        ast = Parser::CurrentRuby.parse(content)
+        traverse_ast(ast, nil) # Pass initial context as nil
+      rescue Parser::SyntaxError => e
+        warn "Warning: Could not parse #{file_path} due to syntax error: #{e.message}"
+        nil # Return nil to indicate parsing failed
+      rescue EncodingError => e
+        warn "Warning: Could not read #{file_path} due to encoding error: #{e.message}. Attempting to force encoding to UTF-8."
+        begin
+          content.force_encoding('UTF-8')
+          ast = Parser::CurrentRuby.parse(content)
+          traverse_ast(ast, nil)
+        rescue Parser::SyntaxError => e
+          warn "Warning: Could not parse #{file_path} after forcing encoding due to syntax error: #{e.message}"
+          nil
+        rescue EncodingError => e
+          warn "Warning: Could not read #{file_path} after forcing encoding due to encoding error: #{e.message}"
+          nil
+        end
+      end
     end
 
     private

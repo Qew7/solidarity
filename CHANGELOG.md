@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.2 (2025-09-21)
+
+*   Added options --with-srp-details and --with-specs.
+
 ## 1.0.1 (2025-09-21)
 
 *   Re-release attempt due to RubyGems.org server issues during 1.0.0 publication.

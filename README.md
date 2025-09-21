@@ -24,6 +24,30 @@ To analyze a Ruby project, run the `solidarity` executable with the path to your
 
     $ solidarity /path/to/your/ruby/project
 
+### Command-Line Options
+
+`solidarity` supports the following command-line options:
+
+*   **`--with-specs`**
+    *   **Description:** By default, `solidarity` excludes files located in `test/` or `spec/` directories, as well as files ending with `_test.rb` or `_spec.rb`. Use this option to include these files in the analysis.
+    *   **Example:**
+        ```bash
+        solidarity --with-specs /path/to/your/ruby/project
+        ```
+
+*   **`--with-srp-details`**
+    *   **Description:** When generating the report for the Single Responsibility Principle (SRP), this option includes a detailed breakdown of SRP scores per class. Without this option, only the overall SRP score is displayed.
+    *   **Example:**
+        ```bash
+        solidarity --with-srp-details /path/to/your/ruby/project
+        ```
+
+    You can also combine options:
+
+    ```bash
+    solidarity --with-specs --with-srp-details /path/to/your/ruby/project
+    ```
+
 The gem will generate a report similar to the following:
 
 ```

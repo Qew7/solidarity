@@ -4,19 +4,21 @@ require_relative 'ast_processor' # Add this line
 
 module Solidarity
   class RailRoadyRunner
-    def self.run(project_path)
+    def self.run(project_path, with_specs: false)
       unless File.directory?(project_path)
         raise ArgumentError, "Project path '#{project_path}' is not a valid directory."
       end
 
-      # Remove Railroady's Rails-specific environment loading
-      # options = OptionsStruct.new(root: project_path, verbose: false, output: nil)
-      # diagram = ModelsDiagram.new(options)
-      # diagram.process
-      # diagram.generate
-      # diagram.graph
+      all_ruby_files = Dir.glob(File.join(project_path, "**", "*.rb"))
 
-      ruby_files = Dir.glob(File.join(project_path, "**", "*.rb"))
+      ruby_files = if with_specs
+                     all_ruby_files
+                   else
+                     all_ruby_files.reject do |file|
+                       file.include?("/test/") || file.include?("/spec/") || file.end_with?("_test.rb") || file.end_with?("_spec.rb")
+                     end
+                   end
+
       ast_data = process_ruby_files_with_ast(ruby_files)
       Solidarity::Graph.from_ast_data(ast_data)
     end
