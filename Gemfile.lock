@@ -2,7 +2,8 @@ PATH
   remote: .
   specs:
     solidarity (0.1.0)
-      railroady
+      parser (~> 3.3.0.2)
+      railroady (~> 1.6)
 
 GEM
   remote: https://rubygems.org/
@@ -20,13 +21,12 @@ GEM
     lint_roller (1.1.0)
     minitest (5.25.5)
     parallel (1.27.0)
-    parser (3.3.9.0)
+    parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.5.1)
     psych (5.2.6)
       date
       stringio
@@ -40,41 +40,38 @@ GEM
     regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
-    rubocop (1.80.2)
+    rexml (3.4.4)
+    rubocop (1.65.1)
       json (~> 2.3)
-      language_server-protocol (~> 3.17.0.2)
-      lint_roller (~> 1.1.0)
+      language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.46.0, < 2.0)
+      regexp_parser (>= 2.4, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.47.0)
-      parser (>= 3.3.7.2)
-      prism (~> 1.4)
-    rubocop-performance (1.25.0)
-      lint_roller (~> 1.1)
-      rubocop (>= 1.75.0, < 2.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.31.2)
+      parser (>= 3.3.0.4)
+    rubocop-performance (1.23.1)
+      rubocop (>= 1.48.1, < 2.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
     ruby-progressbar (1.13.0)
-    standard (1.51.1)
+    standard (1.40.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
-      rubocop (~> 1.80.2)
+      rubocop (~> 1.65.0)
       standard-custom (~> 1.0.0)
-      standard-performance (~> 1.8)
+      standard-performance (~> 1.4)
     standard-custom (1.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.50)
-    standard-performance (1.8.0)
+    standard-performance (1.6.0)
       lint_roller (~> 1.1)
-      rubocop-performance (~> 1.25.0)
+      rubocop-performance (~> 1.23.0)
     stringio (3.1.7)
-    unicode-display_width (3.2.0)
-      unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    unicode-display_width (2.6.0)
 
 PLATFORMS
   arm64-darwin-23
@@ -82,7 +79,7 @@ PLATFORMS
 
 DEPENDENCIES
   irb
-  minitest (~> 5.16)
+  minitest (~> 5.16, ~> 5.0)
   railroady
   rake (~> 13.0)
   solidarity!

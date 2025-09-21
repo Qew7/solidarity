@@ -48,7 +48,7 @@ module Solidarity
       dip_score = 100
       # For now, a very simplistic view: count edges between concrete classes.
       # This needs significant refinement to be meaningful.
-      concrete_to_concrete_dependencies = 0 # Placeholder
+      # concrete_to_concrete_dependencies = 0 # Placeholder
       # @graph.edges.each do |edge|
       #   source_node = @graph.find_node(edge.source)
       #   target_node = @graph.find_node(edge.target)
