@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    solidarity (1.0.1)
+    solidarity (1.0.2)
       parser (~> 3.3.0.2)
 
 GEM
