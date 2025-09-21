@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.1 (2025-09-21)
+
+*   Re-release attempt due to RubyGems.org server issues during 1.0.0 publication.
+
 ## 1.0.0 (2025-09-21)
 
 *   **Significant Refactoring**: Replaced Railroady-based graph generation with AST parsing using the 'parser' gem.
