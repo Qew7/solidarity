@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.3 (2025-09-21)
+
+*   Updated README.md.
+
 ## 1.0.2 (2025-09-21)
 
 *   Added options --with-srp-details and --with-specs.
