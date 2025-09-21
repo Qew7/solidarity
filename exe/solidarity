@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require "solidarity"
+
+# TODO: Add option parsing (e.g., using OptionParser)
+
+project_path = ARGV[0]
+
+unless project_path
+  warn "Usage: #{File.basename($PROGRAM_NAME)} <path_to_ruby_project>"
+  exit 1
+end
+
+begin
+  railroady_graph = Solidarity::RailroadyRunner.run(project_path)
+  graph = Solidarity::Graph.new(railroady_graph)
+  solid_results = Solidarity::SolidEvaluator.new(graph).evaluate_all
+  report = Solidarity::Reporter.generate_report(solid_results)
+  puts report
+rescue => e
+  warn "Error: #{e.message}"
+  exit 1
+end

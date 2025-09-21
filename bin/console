@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "solidarity"
+
+# You can add requires for other Ruby files here if needed
+
+IRB.start
